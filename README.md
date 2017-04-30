@@ -8,3 +8,6 @@
 одного из четырех файлов .mp3 в определенное время , это в свою очередь 
 ведет к тому, что в это время выбранный файл .mp3 запускается в 
 установленном по умолчанию проигрывателе.
+
+![alt text](https://github.com/M0nArX/RS/blob/master/Trash/1.PNG?raw=true)
+![alt text](https://github.com/M0nArX/RS/blob/master/Trash/2.PNG?raw=true)
