@@ -11,7 +11,9 @@
 #-----------------------------------------------------------------------
 
 import os
+import sys
 # Импорт и отображение времени и даты ----------------------------------
+from sys import platform
 from datetime import datetime
 now_time=datetime.now()
 hour=now_time.hour
@@ -270,89 +272,89 @@ while bk!=0:
             print('P.S: Если поставить будильник на 10 минут позже,')
             print('     то будет больше времени чтобы заснуть.')
     print('-------------------------------------------------')
-    
+    if platform == "win32":
 # Будильник в планировщике из CMD --------------------------------------
-    bkbud=0
-    print('Установить будильник? ',sep='',end='')
-    bud=input()
-    if (bud=='0' or bud=='no' or bud=='No' or bud=='NO' or bud=='' 
-    or bud=='нет' or bud=='Нет' or bud=='НЕТ' or bud=='ytn' 
-    or bud=='YTN' or bud=='Ytn' or bud=='тщ' or bud=='Тщ' or bud=='ТЩ'):
-        if bud=='':
-            print('Нет')
+        bkbud=0
+        print('Установить будильник? ',sep='',end='')
+        bud=input()
+        if (bud=='0' or bud=='no' or bud=='No' or bud=='NO' or bud=='' 
+        or bud=='нет' or bud=='Нет' or bud=='НЕТ' or bud=='ytn' 
+        or bud=='YTN' or bud=='Ytn' or bud=='тщ' or bud=='Тщ' or bud=='ТЩ'):
+            if bud=='':
+                print('Нет')
+            else:
+                print(' ')
         else:
-            print(' ')
-    else:
-        bkbud=1
-    if bkbud==1:
+            bkbud=1
+        if bkbud==1:
     # Получение местоположения -----------------------------------------
-        print('-------------------------------------------------')
-        folder='folder.bat'
-        os.system(folder)
-        folder1='folder.log'
-        f=open(folder1, encoding='cp1251')
-        folder3=f.read()
-        folder2=folder3.rstrip()
-        folder=str(folder2)
-        print('')
-        print('-------------------------------------------------')
-        print('')
-        print(folder)
-        print('')
+            print('-------------------------------------------------')
+            folder='folder.bat'
+            os.system(folder)
+            folder1='folder.log'
+            f=open(folder1, encoding='cp1251')
+            folder3=f.read()
+            folder2=folder3.rstrip()
+            folder=str(folder2)
+            print('')
+            print('-------------------------------------------------')
+            print('')
+            print(folder)
+            print('')
     #10:53 14/03/17 ----------------------------------------------------
-        print('-------------------------------------------------')
-        print('Дата и Время: ',now_time.year,'/',month,'/',
-        day,'  ',now_time.hour,':',minute,sep='')
-        print('-------------------------------------------------')
-        print('В какое время? (24-ти часовой формат)')
-        print('Часы ',sep='',end='')
-        twuh=str(input())
-        if 0<=int(twuh)<10:
-            twuh=str('0'+str(twuh))
-        print('Минуты ',sep='',end='')
-        twum=str(input())
-        if 0<=int(twum)<10:
-            twum=str('0'+str(twum))
-        twu=str(twuh+':'+twum)
-        print('Какое число это будет? ',sep='',end='')
-        dwu=str(input())
-        months=month
-        years=now_time.year
-        if 0<=int(dwu)<10:
-            dwu=str('0'+str(dwu))
-        print('Выберите мелодию:')
-        print('     1) 28 days later')
-        print('     2) An End, Once And For All')
-        print('     3) We falling down')
-        print('     4) Heller')
-        print('Ответ: ',sep='',end='')
-        ptemp=input()
-        if ptemp=='':
-            ptemp=int(2)
-        else:
-            ptemp=int(ptemp)
-        if ptemp==1:
-            program1=str(str(folder))
-            program2=str('\MF\28dayslater.mp3')
-        elif ptemp==2:
-            program1=str(str(folder))
-            program2=str('\MF\AnEndOnceAndForAll.mp3')
-        elif ptemp==3:
-            program1=str(str(folder))
-            program2=str('\MF\Wefallingdown.mp3')
-        elif ptemp==4:
-            program1=str(str(folder))
-            program2=str('\MF\Heller.mp3')
-        else:
-            program1=str(folder)
-            program2=str('\MF\AnEndOnceAndForAll.mp3')
-        program=program1+program2
-        bcmd=(
-        'SCHTASKS /Create /SC once /F /TN Будильник /ST '+str(twu)
-        +' /SD '+str(dwu)+'/'+str(month)+'/'+str(years)
-        +' /TR '+program)
-        os.system(bcmd)
-        print('-------------------------------------------------')
+            print('-------------------------------------------------')
+            print('Дата и Время: ',now_time.year,'/',month,'/',
+            day,'  ',now_time.hour,':',minute,sep='')
+            print('-------------------------------------------------')
+            print('В какое время? (24-ти часовой формат)')
+            print('Часы ',sep='',end='')
+            twuh=str(input())
+            if 0<=int(twuh)<10:
+                twuh=str('0'+str(twuh))
+            print('Минуты ',sep='',end='')
+            twum=str(input())
+            if 0<=int(twum)<10:
+                twum=str('0'+str(twum))
+            twu=str(twuh+':'+twum)
+            print('Какое число это будет? ',sep='',end='')
+            dwu=str(input())
+            months=month
+            years=now_time.year
+            if 0<=int(dwu)<10:
+                dwu=str('0'+str(dwu))
+            print('Выберите мелодию:')
+            print('     1) 28 days later')
+            print('     2) An End, Once And For All')
+            print('     3) We falling down')
+            print('     4) Heller')
+            print('Ответ: ',sep='',end='')
+            ptemp=input()
+            if ptemp=='':
+                ptemp=int(2)
+            else:
+                ptemp=int(ptemp)
+            if ptemp==1:
+                program1=str(str(folder))
+                program2=str('\MF\28dayslater.mp3')
+            elif ptemp==2:
+                program1=str(str(folder))
+                program2=str('\MF\AnEndOnceAndForAll.mp3')
+            elif ptemp==3:
+                program1=str(str(folder))
+                program2=str('\MF\Wefallingdown.mp3')
+            elif ptemp==4:
+                program1=str(str(folder))
+                program2=str('\MF\Heller.mp3')
+            else:
+                program1=str(folder)
+                program2=str('\MF\AnEndOnceAndForAll.mp3')
+            program=program1+program2
+            bcmd=(
+            'SCHTASKS /Create /SC once /F /TN Будильник /ST '+str(twu)
+            +' /SD '+str(dwu)+'/'+str(month)+'/'+str(years)
+            +' /TR '+program)
+            os.system(bcmd)
+            print('-------------------------------------------------')
 #6:25PM 13/03/17 -------------------------------------------------------
 
     print('Желаете продолжить? ',sep='',end='')
